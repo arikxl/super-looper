@@ -1,24 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Pad from './Pad';
 
 import { pads } from '../data/data'
 
-const PadsList = ({ isPlaying, volume }) => {
+const PadsList = ({ isPlaying, volume, setIsPlaying }) => {
 
     const [tracksToPlay, setTracksToPlay] = useState([]);
-    const audioTrack = useRef(null);
 
     useEffect(() => {
-        if (audioTrack.current) {
-            if (isPlaying) {
-                audioTrack.current.play()
-                audioTrack.current.volume = volume;
-            } else {
-                audioTrack.current.pause()
-            }
+        if (isPlaying) {
+            tracksToPlay.forEach(track => {
+                track.current.play()
+                track.current.volume = volume;
+            })
         }
-
-    }, [isPlaying, volume, audioTrack])
+        else {
+            tracksToPlay.forEach(track => {
+                track.current.pause()
+            })
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isPlaying, volume])
 
     return (
         < div className="pad-list-container" >
@@ -27,13 +29,9 @@ const PadsList = ({ isPlaying, volume }) => {
                 {pads.map((pad) => (
                     <Pad pad={pad} key={pad.id}
                         isPlaying={isPlaying}
-                        volume={volume}
                         setTracksToPlay={setTracksToPlay} />
                 ))}
             </div>
-
-
-            {tracksToPlay.map((sound) => <audio src={sound} ref={audioTrack} />)}
         </div >
     );
 };

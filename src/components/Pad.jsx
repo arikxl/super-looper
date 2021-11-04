@@ -1,20 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-const Pad = ({ pad, isPlaying, volume, setTracksToPlay }) => {
+const Pad = ({ pad, isPlaying, setTracksToPlay  }) => {
+// console.log('pad:', pad)
 
-    // const audioTrack = useRef(null);
+    const audioRef = useRef(null);
     const [isActive, setIsActive] = useState(false);
 
 
     const playMusic = () => {
-        setIsActive(!isActive);
         if (!isActive) {
-            setTracksToPlay(array => [...array, pad.sound]);
+            setTracksToPlay(array => [...array, audioRef]);
         } else {
-            setTracksToPlay(array => array.filter(n => n !== pad.sound))
+            setTracksToPlay(array => array.filter(ref => ref !== audioRef))
         }
-        // audioTrack.current.play()
-        // audioTrack.current.pause()
+        setIsActive(!isActive);
     }
 
     // useEffect(() => {
@@ -32,7 +31,7 @@ const Pad = ({ pad, isPlaying, volume, setTracksToPlay }) => {
             <button className={`css-button-3d--sand ${isActive && "active"} `}
                 onClick={() => playMusic()}>
                 {pad.name}
-                {/* <audio src={pad.sound} ref={audioTrack} /> */}
+                <audio loop src={pad.sound} ref={audioRef} />
             </button>
         </div>
     )

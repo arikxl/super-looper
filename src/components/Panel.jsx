@@ -19,7 +19,7 @@ const Panel = () => {
                     <button onClick={() => setIsPlaying(false)}>⏸</button>
                     PER</h1>
             </div>
-            <PadsList isPlaying={isPlaying} volume={volume}/>
+            <PadsList isPlaying={isPlaying} setIsPlaying={setIsPlaying} volume={volume}/>
             <Volume volume={volume} setVolume={setVolume}/>
         </div>
     )
