@@ -90,9 +90,12 @@ button {
 }
 
 
-@media screen and (max-width: 600px) {
-  .css-button-3d--sand{
-    width: 90px;
+@media (max-width: 950px) {
+  .css-button-3d--sand {
+    min-width: 30px;
+    width: 80px;
+    font-size: .5rem;
+    /* background-color: red; */
   }
 }
   

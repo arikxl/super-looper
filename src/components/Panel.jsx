@@ -9,6 +9,7 @@ const Panel = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(0.5);
     
+    
 
     return (
         <div className={`panel-container ${isPlaying && "is-playing"} `}>

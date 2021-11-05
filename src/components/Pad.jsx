@@ -1,18 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-const Pad = ({ pad, isPlaying, setTracksToPlay  }) => {
-// console.log('pad:', pad)
+const Pad = ({ pad, isPlaying, setTracksToPlay, setWaitingListTracks }) => {
 
     const audioRef = useRef(null);
     const [isActive, setIsActive] = useState(false);
 
 
-    const playMusic = () => {
+    const makeActive = () => {
+        if (isPlaying) {    
+            if(!isActive) {
+                setWaitingListTracks(array => [...array, audioRef]);
+            } else {
+                setWaitingListTracks(array => array.filter(ref => ref !== audioRef))
+            }
+        }
+        
         if (!isActive) {
             setTracksToPlay(array => [...array, audioRef]);
         } else {
             setTracksToPlay(array => array.filter(ref => ref !== audioRef))
         }
+
+      
         setIsActive(!isActive);
     }
 
@@ -29,9 +38,9 @@ const Pad = ({ pad, isPlaying, setTracksToPlay  }) => {
     return (
         <div className="pad">
             <button className={`css-button-3d--sand ${isActive && "active"} `}
-                onClick={() => playMusic()}>
+                onClick={() => makeActive()}>
                 {pad.name}
-                <audio loop src={pad.sound} ref={audioRef} />
+                <audio src={pad.sound} ref={audioRef} />
             </button>
         </div>
     )
