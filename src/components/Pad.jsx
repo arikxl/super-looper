@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react';
 
 const Pad = ({ pad, isPlaying, setTracksToPlay, setWaitingListTracks }) => {
 
@@ -37,7 +37,7 @@ const Pad = ({ pad, isPlaying, setTracksToPlay, setWaitingListTracks }) => {
 
     return (
         <div className="pad">
-            <button className={`css-button-3d--sand ${isActive && "active"} `}
+            <button className={`pad-btn ${isActive && "active"} `}
                 onClick={() => makeActive()}>
                 {pad.name}
                 <audio src={pad.sound} ref={audioRef} />

@@ -17,7 +17,7 @@ export const pads = [
     },
     {
         id: 102,
-        name: 'Stutter Break Beats',
+        name: 'Break Beats',
         sound: stutterBreakBeats,
         color: '#FFFFFF'
     },

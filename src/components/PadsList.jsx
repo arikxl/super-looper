@@ -59,6 +59,7 @@ const PadsList = ({ isPlaying, volume, setIsPlaying }) => {
 
     return (
         < div className="pad-list-container" >
+            
             <div className="pad-list">
                 {pads.map((pad) => (
                     <Pad pad={pad} key={pad.id}
