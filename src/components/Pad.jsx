@@ -7,21 +7,21 @@ const Pad = ({ pad, isPlaying, setTracksToPlay, setWaitingListTracks }) => {
 
 
     const makeActive = () => {
-        if (isPlaying) {    
-            if(!isActive) {
+        if (!isPlaying) {
+            if (!isActive) {
+                setTracksToPlay(array => [...array, audioRef]);
+            } else {
+                setTracksToPlay(array => array.filter(ref => ref !== audioRef))
+            }
+        }
+
+        if (isPlaying) {
+            if (isActive) {
                 setWaitingListTracks(array => [...array, audioRef]);
             } else {
                 setWaitingListTracks(array => array.filter(ref => ref !== audioRef))
             }
         }
-        
-        if (!isActive) {
-            setTracksToPlay(array => [...array, audioRef]);
-        } else {
-            setTracksToPlay(array => array.filter(ref => ref !== audioRef))
-        }
-
-      
         setIsActive(!isActive);
     }
 

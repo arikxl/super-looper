@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Fredoka One', cursive;
 }
 
 .App {
@@ -11,13 +12,13 @@
 button {
   cursor: pointer;
   border: none;
-}
+  padding: 0;
+  margin: 0;
+  font-family: 'Fredoka One', cursive;}
 
 .is-playing{
   background-image: linear-gradient(315deg, #4ecdc4 0%, #c797eb 75%);
-  
 }
-
 
 .panel-container{
   border-radius: 20px;
@@ -34,7 +35,26 @@ button {
   border-radius: 20px;
   margin: 20px auto; 
   background-color: white;
+}
+.headline{
+  display: flex;
+  justify-content: center;
+}
 
+span {
+  display: flex;
+  align-items: center;
+}
+.headline-btn {
+  width: 30px;
+  height: 30px; 
+  background-color: red;
+  line-height: 10px;
+  font-size: 1rem;
+  padding-top: 20px;
+  border-radius:50%;
+  display: flex;
+  justify-content: center;
 }
 
 .pad-list {
@@ -54,9 +74,9 @@ button {
 .css-button-3d--sand {
   min-width: 140px;
   height: 40px;
-  color: grey;
+  color: black;
   padding: 5px 10px;
-  font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
