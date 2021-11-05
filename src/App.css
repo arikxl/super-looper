@@ -50,7 +50,7 @@ button {
 }
 
 .panel-container{
-  margin: 10px auto;
+  margin: 50px auto;
   padding-top: 20px;
   border-radius: 20px;
   width: 40%;
@@ -58,6 +58,8 @@ button {
   -webkit-box-shadow: -2px 12px 17px -3px rgba(0,0,0,0.69); 
   box-shadow: -2px 12px 17px -3px rgba(0,0,0,0.69);
   background-color: white;
+  height: 80vh;
+
   /* z-index: 2; */
 }
 
@@ -174,19 +176,11 @@ span {
   .panel-container{
     width: 80%;
   }
-  .pad-list {
-    width: 80%;
-    /* padding: 0;
-    margin: 0; */
-  }
 
-  .pad{
-    width: 40px;
-  }
   .pad-btn {
-    min-width: 100px;
     width: 100px;
-    font-size: .7rem;
+    min-width: 0;
+    font-size: .8rem;
   }
 
   .volume-input {
@@ -198,16 +192,24 @@ span {
   .panel-container{
     width: 90%;
   }
-  .pad-list {
+
+  .pad-btn {
+    font-size: .7rem;
+  }
+
+  .volume-input {
+    width: 50%;
+  }
+}
+@media (max-width: 430px) {
+
+  .pad-list-container {
     width: 90%;
   }
 
-  .pad{
-    width: 40px;
-  }
   .pad-btn {
-    width: 100px;
-    font-size: .7rem;
+    width: 80px;
+    font-size: .6rem;
   }
 
   .volume-input {
