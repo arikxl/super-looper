@@ -6,10 +6,12 @@ import PauseCircleRoundedIcon from '@mui/icons-material/PauseCircleRounded';
 
 import Volume from './Volume';
 import PadsList from './PadsList';
+import Recorder from './Recorder';
 
 const Panel = () => {
 
     const [volume, setVolume] = useState(0.5);
+    const [recording, setRecording] = useState('');
     const [isPlaying, setIsPlaying] = useState(false)
     const [tracksToPlay, setTracksToPlay] = useState([])
     const { pads } = useSelector((state => state.padsModule))
@@ -49,10 +51,10 @@ const Panel = () => {
     };
 
     const playTracks = () => {
-        console.log('tracksToPlay:', tracksToPlay)
         tracksToPlay.forEach((track) => {
             track.play()
         })
+        setRecording(tracksToPlay)
     };
 
     const stopTracks = () => {
@@ -65,7 +67,6 @@ const Panel = () => {
             clearInterval(loopInterval)
         };
     };
-
 
     console.log('RENDER')
     return (
@@ -95,6 +96,11 @@ const Panel = () => {
             )}
             <PadsList isPlaying={isPlaying} setIsPlaying={setIsPlaying} volume={volume} />
             <Volume volume={volume} setVolume={setVolume} />
+            {recording && (
+                <Recorder recording={recording} setRecording={setRecording} />
+
+            )}
+
         </div>
     )
 }
