@@ -1,49 +1,28 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-const Pad = ({ pad, isPlaying, setTracksToPlay, setWaitingListTracks }) => {
+import { addPlayList } from '../store/actions/pedsActions';
 
-    const audioRef = useRef(null);
+const Pad = ({ pad }) => {
     const [isActive, setIsActive] = useState(false);
+    const audioRef = useRef(null);
+    const dispatch = useDispatch();
 
-
-    const makeActive = () => {
-        if (!isPlaying) {
-            if (!isActive) {
-                setTracksToPlay(array => [...array, audioRef]);
-            } else {
-                setTracksToPlay(array => array.filter(ref => ref !== audioRef))
-            }
-        }
-
-        if (isPlaying) {
-            if (isActive) {
-                setWaitingListTracks(array => [...array, audioRef]);
-            } else {
-                setWaitingListTracks(array => array.filter(ref => ref !== audioRef))
-            }
-        }
-        setIsActive(!isActive);
+    const toggleActive = () => {
+        setIsActive( !isActive);
+        pad.isActive = !pad.isActive;
+        dispatch(addPlayList(pad));
     }
-
-    // useEffect(() => {
-    //     if (isPlaying) {
-    //         audioTrack.current.play()
-    //         audioTrack.current.volume = volume;
-    //     } else {
-    //         audioTrack.current.pause()
-    //     }
-    // })
-
-
+    
     return (
         <div className="pad">
             <button className={`pad-btn ${isActive && "active"} `}
-                onClick={() => makeActive()}>
+                onClick={() => toggleActive()} >
                 {pad.name}
                 <audio src={pad.sound} ref={audioRef} />
             </button>
         </div>
     )
-}
+};
 
-export default Pad
+export default Pad;

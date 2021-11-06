@@ -7,9 +7,9 @@ const Volume = ({ volume, setVolume }) => {
         <div>
             <h2>Volume</h2>
             <VolumeOffRoundedIcon />
-            <input type="range" step="0.01" value={volume}
+            <input type="range" step="0.1" value={volume}
                 className="volume-input"
-                min="0" max="1"
+                min="0" max="1" 
                 onChange={(e) => setVolume(e.target.value)} />
             <VolumeUpRoundedIcon />
         </div>
