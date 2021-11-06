@@ -5,7 +5,6 @@ import VolumeOffRoundedIcon from '@mui/icons-material/VolumeOffRounded';
 const Volume = ({ volume, setVolume }) => {
     return (
         <div>
-            <h2>Volume</h2>
             <VolumeOffRoundedIcon />
             <input type="range" step="0.1" value={volume}
                 className="volume-input"

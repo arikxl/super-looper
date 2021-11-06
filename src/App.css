@@ -14,6 +14,7 @@ button {
 
 .headline-btn1:hover {
   color: #c797eb;
+  animation: blinker 1s linear infinite;
 }
 .headline-btn2:hover {
   color: #4ecdc4;
@@ -59,8 +60,6 @@ button {
   box-shadow: -2px 12px 17px -3px rgba(0,0,0,0.69);
   background-color: white;
   height: 80vh;
-
-  /* z-index: 2; */
 }
 
 .pad-list-container{
@@ -80,7 +79,6 @@ span {
   align-items: center;
 }
 
-
 .pad-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -89,10 +87,8 @@ span {
 }
 
 .pad {
-  /* height: 100px;   */
   margin: 0 auto;
   width: 100%;
-  
 }
 
 .pad-btn {
@@ -110,6 +106,10 @@ span {
   background: #ced4da;
   box-shadow: 0 5px #adb5bd;
 }
+
+
+
+
 
 .pad-btn:hover {
   box-shadow: 0 3px #adb5bd;
@@ -132,7 +132,6 @@ span {
   margin: 10px;
   cursor: pointer;
 }
-
 
 @media (max-width: 1050px) {
 
@@ -165,7 +164,6 @@ span {
   .pad-btn {
     width: 150px;
   }
-
   .volume-input {
     width: 70%;
   }
@@ -176,42 +174,38 @@ span {
   .panel-container{
     width: 80%;
   }
-
   .pad-btn {
     width: 100px;
     min-width: 0;
     font-size: .8rem;
   }
-
   .volume-input {
     width: 50%;
   }
 }
+
 @media (max-width: 500px) {
 
   .panel-container{
     width: 90%;
   }
-
   .pad-btn {
     font-size: .7rem;
   }
-
   .volume-input {
     width: 50%;
   }
 }
+
 @media (max-width: 430px) {
 
   .pad-list-container {
     width: 90%;
   }
-
   .pad-btn {
     width: 80px;
     font-size: .6rem;
   }
-
   .volume-input {
     width: 50%;
   }

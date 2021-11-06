@@ -16,17 +16,17 @@ const Panel = () => {
 
     const audioTracks = [];
     let loopInterval = null;
-    let test = null;
 
     useEffect(() => {
         if (isPlaying) {
+            playTracks()
             loopInterval = setInterval(() => {
                 console.log('LOOP')
                 updateTracks()
-            }, 4000);
+                playTracks()
+            }, 8000);
             return () => {
                 clearInterval(loopInterval)
-                clearInterval(test)
             };
         }
     }, [tracksToPlay, isPlaying]);
@@ -46,13 +46,11 @@ const Panel = () => {
                 setTracksToPlay(audioTracks);
             }
         });
-        console.log('audioTracks:', audioTracks)
-        playTracks()
     };
 
     const playTracks = () => {
+        console.log('tracksToPlay:', tracksToPlay)
         tracksToPlay.forEach((track) => {
-            console.log('track:', track)
             track.play()
         })
     };
@@ -65,7 +63,6 @@ const Panel = () => {
         console.log('CLEAR')
         return () => {
             clearInterval(loopInterval)
-            clearInterval(test)
         };
     };
 
@@ -78,7 +75,7 @@ const Panel = () => {
                 <h1>SUPER<br />
                     <span>
                         L
-                        <button onClick={() => updateTracks()}
+                        <button onClick={() => { playTracks(); updateTracks() }}
                             className={`headline-btn1 ${isPlaying && "white"}`}>
                             <PlayCircleRoundedIcon sx={{ fontSize: 35 }} />
                         </button>
