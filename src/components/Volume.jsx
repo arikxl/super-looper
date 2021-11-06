@@ -8,7 +8,7 @@ const Volume = ({ volume, setVolume }) => {
             <VolumeOffRoundedIcon />
             <input type="range" step="0.1" value={volume}
                 className="volume-input"
-                min="0" max="1" 
+                min="0" max="1"
                 onChange={(e) => setVolume(e.target.value)} />
             <VolumeUpRoundedIcon />
         </div>

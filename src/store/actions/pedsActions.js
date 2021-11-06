@@ -1,4 +1,4 @@
-import {pedsService} from '../../services/padsService'
+import {pedsService} from '../../services/padsService';
 
 export const loadPads =  () => {
     return async dispatch => {
@@ -9,6 +9,6 @@ export const loadPads =  () => {
 
 export const addPlayList = (pad) => {
     return async dispatch => {
-        dispatch({ type:'ADD_PLAYLIST', pad})
+        dispatch({ type:'ADD_PLAYLIST', pad});
     };
 };

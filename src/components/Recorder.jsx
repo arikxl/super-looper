@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Recorder = ({ recording, setRecording }) => {
-    
+
     const playRecording = () => {
-        console.log('recording:', recording)
         recording.forEach((track) => {
             track.play()
-        })
-    }
+        });
+    };
 
     return (
         <div>
-            <button onClick={() => playRecording()}>PLay</button>
+            <button className="play pad-btn"
+                onClick={() => playRecording()}>PLay Record</button>
 
-            <button onClick={() =>setRecording('')}>Clear</button>
+            <button className="clear pad-btn"
+                onClick={() => setRecording('')}>Clear Record</button>
         </div>
-    )
-}
+    );
+};
 
-export default Recorder
+export default Recorder;

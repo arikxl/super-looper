@@ -1,5 +1,5 @@
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 
 import {padsReducer} from './reducers/padsReducers'
 
@@ -8,4 +8,4 @@ const rootReducer = combineReducers({
 });
 
 export const store = createStore(rootReducer,
-    compose(applyMiddleware(ReduxThunk))); //Passing the reducer
+    compose(applyMiddleware(ReduxThunk)));

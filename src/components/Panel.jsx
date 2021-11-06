@@ -13,6 +13,7 @@ const Panel = () => {
     const [volume, setVolume] = useState(0.5);
     const [recording, setRecording] = useState('');
     const [isPlaying, setIsPlaying] = useState(false)
+    const [isBlinking, setIsBlinking] = useState(false)
     const [tracksToPlay, setTracksToPlay] = useState([])
     const { pads } = useSelector((state => state.padsModule))
 
@@ -23,7 +24,6 @@ const Panel = () => {
         if (isPlaying) {
             playTracks()
             loopInterval = setInterval(() => {
-                console.log('LOOP')
                 updateTracks()
                 playTracks()
             }, 8000);
@@ -62,13 +62,11 @@ const Panel = () => {
         tracksToPlay.forEach((track) => {
             track.pause()
         })
-        console.log('CLEAR')
         return () => {
             clearInterval(loopInterval)
         };
     };
 
-    console.log('RENDER')
     return (
 
         <div className={`panel-container ${isPlaying && "is-playing"} `}>
@@ -77,7 +75,8 @@ const Panel = () => {
                     <span>
                         L
                         <button onClick={() => { playTracks(); updateTracks() }}
-                            className={`headline-btn1 ${isPlaying && "white"}`}>
+                            className={`headline-btn1
+                            ${isBlinking && "blink"} ${isPlaying && "white"}`}>
                             <PlayCircleRoundedIcon sx={{ fontSize: 35 }} />
                         </button>
                         <button onClick={() => stopTracks()}
@@ -85,7 +84,8 @@ const Panel = () => {
                             <PauseCircleRoundedIcon sx={{ fontSize: 35, }} />
                         </button>
                         PER
-                    </span></h1>
+                    </span>
+                </h1>
             </div>
             {isPlaying && (
                 <>
@@ -94,15 +94,14 @@ const Panel = () => {
                     <div className="bg bg3"></div>
                 </>
             )}
-            <PadsList isPlaying={isPlaying} setIsPlaying={setIsPlaying} volume={volume} />
+            <PadsList isPlaying={isPlaying} setIsBlinking={setIsBlinking}
+                setIsPlaying={setIsPlaying} volume={volume} />
             <Volume volume={volume} setVolume={setVolume} />
             {recording && (
                 <Recorder recording={recording} setRecording={setRecording} />
-
             )}
-
         </div>
-    )
-}
+    );
+};
 
-export default Panel
+export default Panel;
